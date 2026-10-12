@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  /* Mono carries the instrument. Plex Sans appears only in prose. */
+  body {
+    @apply bg-ink text-paper font-mono antialiased;
+    font-feature-settings: "zero" 1;
+    letter-spacing: -0.005em;
+  }
+
+  .prose-sans {
+    @apply font-sans;
+    letter-spacing: 0;
+  }
+
+  /* numerals never shift width while results stream in */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: #d8763a;
+    color: #0d0d0f;
+  }
+
+  *:focus-visible {
+    outline: 1px solid #d8763a;
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0d0d0f; }
+  ::-webkit-scrollbar-thumb { background: #2a2a31; }
+  ::-webkit-scrollbar-thumb:hover { background: #3a3a44; }
+}
+
+@layer components {
+  /* the repeating structural unit: a labelled field of technical output */
+  .field-label {
+    @apply font-mono text-micro uppercase text-muted;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
